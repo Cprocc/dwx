@@ -1,0 +1,444 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'plugin/gentelella/production/images/favicon.ico' %}" type="image/ico"/>
+    <title>手机市场洞察 | </title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugin/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Font Awesome -->
+    <link href="{% static 'plugin/gentelella/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'plugin/gentelella/vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'plugin/gentelella/vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'plugin/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}"
+          rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{% static 'plugin/gentelella/vendors/jqvmap/dist/jqvmap.min.css' %}" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static 'plugin/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css' %}"
+          rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'plugin/gentelella/build/css/custom.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'plugin/DataTables/media/css/dataTables.bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugin/datetimepicker/jquery.datetimepicker.css' %}">
+
+
+    <style>
+        /*查询区域*/
+        #mobile_data > thead > tr > th {
+            text-align: center;
+        }
+
+        #mobile_data > tbody > tr > td {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+                        <span> 手机市场洞察</span>
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>MENU</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="{% url 'index' %}"><i class="fa fa-home"></i> 市场概要</a>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> 品牌分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="form.html">品牌排行</a></li>
+                                    <li><a href="form_advanced.html">价格段排行</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-table"></i> 商品分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="tables.html">商品排行</a></li>
+                                    <li class="active"><a>热销商品<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: block;">
+                                            <li class="sub_menu"><a href="{% url 'query_mobile' %}">商品查询</a>
+                                            </li>
+                                            <li class="sub_menu"><a href="{% url 'Apple' %}">苹果</a>
+                                            </li>
+                                            <li><a href="{% url 'Huawei' %}">华为</a>
+                                            </li>
+                                            <li><a href="{% url 'XiaoMi' %}">小米</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-bar-chart-o"></i> 店铺分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="chartjs.html">天猫</a></li>
+                                    <li><a href="chartjs2.html">京东</a></li>
+                                    <li><a href="morisjs.html">对比分析</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>US</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> 关于我们 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{% url 'contacts' %}">成员介绍</a></li>
+                                    <li><a href="{% url 'projects' %}">组内分工</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+                <nav class="nav navbar-nav">
+                    <ul class=" navbar-right">
+                        <li class="nav-item dropdown open" style="padding-left: 15px;">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                               id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'plugin/gentelella/production/images/img.jpg' %}" alt="">32组的一群小山炮
+                            </a>
+                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="javascript:;"> 账户信息</a>
+                                <a class="dropdown-item" href="javascript:;">
+                                    <span class="badge bg-red pull-right">50%</span>
+                                    <span>个人设置</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:;">帮助</a>
+                                <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
+                                    退出登录</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3 style="padding-left: 10px;">商品详情
+                            <small style="font-size: xx-small;font-weight: 400;color: #FF7777 ">
+                                <a href="https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.2bd73b3fgA02ez&id=630488439841&skuId=4654651019544&areaId=110100&user_id=713903115&cat_id=50024400&is_b=1&rn=9ffbff25d39f37a7f91d1a29ddd09f26" target="_blank">
+                                    进入详情页</a>
+                            </small>
+                        </h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="搜索......">
+                                <span class="input-group-btn">
+{#                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>#}
+                      <button class="btn btn-default glyphicon glyphicon-search" type="button"
+                              style="top: 0px;padding-top: 10px;padding-bottom: 10px"></button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 ">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>热门商品展示</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <div class="col-md-7 col-sm-7 ">
+                                    <div class="product-image" style="padding-top: 40px;">
+                                        <img src="{% static 'plugin/gentelella/production/images/Apple12.gif' %}" alt="..."/>
+                                    </div>
+                                    <div class="product_gallery">
+                                        <a style="margin-top: 20px;">
+                                            <img src="{% static 'plugin/gentelella/production/images/apple1.png' %}" alt="..."/>
+                                        </a>
+                                        <a style="margin-top: 20px;">
+                                            <img src="{% static 'plugin/gentelella/production/images/apple2.png' %}" alt="..."/>
+                                        </a>
+                                        <a style="margin-top: 20px;">
+                                            <img src="{% static 'plugin/gentelella/production/images/apple3.png' %}" alt="..."/>
+                                        </a>
+                                        <a style="margin-top: 20px;">
+                                            <img src="{% static 'plugin/gentelella/production/images/apple4.png' %}" alt="..."/>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                                <br class="col-md-5 col-sm-5 " style="border:0px solid #e5e5e5;">
+
+                                <h3 class="prod_title" style="color: #161616;font-weight:700">苹果12手机iPhone12
+                                    5G手机苹果12pro新款iphone12mini苹果11pro max官网旗舰apple12预售13预定12苹果promax</h3>
+
+                                <p>品牌名称：Apple/苹果</br>
+                                    <br>证书编号：2020011606330723</br>
+                                    <br>产品名称：5G数字移动电话机 </br>
+                                    <br>证书状态：有效</br>
+                                    <br>Apple型号：iPhone 12</br>
+                                </p>
+                                <br/>
+
+                                <div class="">
+                                    <h2>机身颜色</h2>
+                                    <ul class="list-inline prod_color display-layout">
+                                        <li>
+                                            <img src="{% static 'plugin/gentelella/production/images/a白色.png' %}" width="60" height="30">
+                                        </li>
+                                        <li>
+                                            <img src="{% static 'plugin/gentelella/production/images/a红色.png' %}" width="60" height="30">
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            <img src="{% static 'plugin/gentelella/production/images/a绿色.png' %}" width="60" height="30">
+                                        </li>
+
+                                        <li>
+                                            <img src="{% static 'plugin/gentelella/production/images/a蓝色.png' %}" width="60" height="30">
+                                        </li>
+
+                                        <li>
+                                            <img src="{% static 'plugin/gentelella/production/images/a黑色.png' %}" width="60" height="30">
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                                <br/>
+
+                                <div class style="padding-left: 550px;">
+                                    <h2>存储容量</h2>
+                                    <ul class="list-inline prod_size display-layout">
+                                        <li>
+                                            <img src="{% static 'plugin/gentelella/production/images/64G.png' %}" width="60" height="30" hspace="20">
+                                        </li>
+                                        <li>
+                                            <img src="{% static 'plugin/gentelella/production/images/a128g.png' %}" width="60" height="30" hspace="20">
+                                        </li>
+                                        <li>
+                                            <img src="{% static 'plugin/gentelella/production/images/a256g.png' %}" width="60" height="30" hspace="20">
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <br/>
+
+                                <div class="">
+                                    <div class="product_price">
+                                        <h1 class="price">¥ 6998.00</h1>
+                                        <span class="price-tax">淘金币可抵扣商品价格5%</span>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <h2>具体详情</h2>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="col-md-12">
+
+                                <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home1-tab" data-toggle="tab" href="#home1"
+                                           role="tab" aria-controls="home1" aria-selected="true">规格参数</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="home2-tab" data-toggle="tab" href="#home2" role="tab"
+                                           aria-controls="home2" aria-selected="false">包装清单</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment"
+                                           role="tab" aria-controls="comment" aria-selected="false">热门评论</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade" id="home1" role="tabpanel"
+                                         aria-labelledby="home1-tab">
+                                        后置摄像头: 1200万<br/>
+                                        摄像头类型: 三摄像头（后双）<br/>
+                                        视频显示格式: 不详<br/>
+                                        分辨率: 2532x1170<br/>
+                                        触摸屏类型: 电容屏，多点触控<br/>
+                                        屏幕尺寸: 6.1英寸<br/>
+                                        网络类型: 无需合约版<br/>
+                                        网络模式: 双卡双待<br/>
+                                        键盘类型: 虚拟触屏键盘<br/>
+                                        款式: 直板<br/>
+                                        运行内存RAM: 4GB<br/>
+                                        存储容量: 64GB 128GB 256GB 512GB<br/></div>
+
+                                        <div class="tab-pane fade" id="home2" role="tabpanel"
+                                             aria-labelledby="home2-tab">
+                                            品牌: Apple/苹果<br/>
+                                            Apple型号: iPhone 12<br/>
+                                            电池类型: 不可拆卸式电池<br/>
+                                            CPU核心数: 八核<br/>
+                                            机身颜色: 红色 苹果12Pro海蓝色 苹果12Pro金色 苹果12Pro石墨色 苹果12Pro银色 白色 黑色 蓝色 绿色<br/>
+                                            手机类型: 拍照手机 音乐手机 时尚手机 智能手机 电视手机 女性手机<br/>
+                                            操作系统: iOS<br/>
+                                            CPU品牌: Apple/苹果<br/>
+                                            CPU型号: 其他<br/>
+                                            iPhone: 1 件<br/>
+                                            USB-C 转闪电连接线: 1 件<br/>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="comment" role="tabpanel"
+                                             aria-labelledby="comment-tab">
+                                            <p>手机收到了 物流真的超快 隔日达 新款的12说实话比11好太多了 <br/>
+                                                感觉手感很不错 功能也好很多 客服服务态度也很好 点个赞<br/>
+                                                <img src="{% static 'plugin/gentelella/production/images/a122.jpg' %}" style="width: 60px;height: 60px;">
+                                                <img src="{% static 'plugin/gentelella/production/images/a123.jpg' %}" style="width: 60px;height: 60px;">
+                                                <img src="{% static 'plugin/gentelella/production/images/a124.jpg' %}" style="width: 60px;height: 60px;">
+                                                <img src="{% static 'plugin/gentelella/production/images/a125.jpg' %}" style="width: 60px;height: 60px;">
+                                            </p>
+                                            <p>拍照效果：好 电池续航：耐用 通信音质：不错 运行速度：快 显示效果：清晰<br/>
+                                                <img src="{% static 'plugin/gentelella/production/images/a211.jpg' %}" style="width: 60px;height: 60px;">
+                                                <img src="{% static 'plugin/gentelella/production/images/a212.jpg' %}" style="width: 60px;height: 60px;">
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    32组-手机市场洞察-商品展示详情 <a href="https://colorlib.com">欢迎查看</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!-- jQuery -->
+<script src="{% static 'plugin/gentelella/vendors/jquery/dist/jquery.min.js' %}"></script>
+<script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="{% static 'plugin/DataTables/media/js/dataTables.bootstrap.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'plugin/gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'plugin/gentelella/vendors/fastclick/lib/fastclick.js' %}"></script>
+<!-- NProgress -->
+<script src="{% static 'plugin/gentelella/vendors/nprogress/nprogress.js' %}"></script>
+<!-- Chart.js -->
+<script src="{% static 'plugin/gentelella/vendors/Chart.js/dist/Chart.min.js' %}"></script>
+<!-- gauge.js -->
+<script src="{% static 'plugin/gentelella/vendors/gauge.js/dist/gauge.min.js' %}"></script>
+<!-- bootstrap-progressbar -->
+<script src="{% static 'plugin/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+<!-- iCheck -->
+<script src="{% static 'plugin/gentelella/vendors/iCheck/icheck.min.js' %}"></script>
+<!-- Skycons -->
+<script src="{% static 'plugin/gentelella/vendors/skycons/skycons.js' %}"></script>
+<!-- Flot -->
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.pie.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.time.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.stack.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.resize.js' %}"></script>
+<!-- Flot plugins -->
+<script src="{% static 'plugin/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/flot.curvedlines/curvedLines.js' %}"></script>
+<!-- DateJS -->
+<script src="{% static 'plugin/gentelella/vendors/DateJS/build/date.js' %}"></script>
+<!-- JQVMap -->
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/dist/jquery.vmap.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="{% static 'plugin/gentelella/vendors/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{% static 'plugin/gentelella/build/js/custom.min.js' %}"></script>

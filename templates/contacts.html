@@ -1,0 +1,600 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'plugin/gentelella/production/images/favicon.ico' %}" type="image/ico"/>
+
+    <title>手机市场洞察 | </title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugin/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Font Awesome -->
+    <link href="{% static 'plugin/gentelella/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'plugin/gentelella/vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'plugin/gentelella/vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'plugin/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}"
+          rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{% static 'plugin/gentelella/vendors/jqvmap/dist/jqvmap.min.css' %}" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static 'plugin/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css' %}"
+          rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'plugin/gentelella/build/css/custom.min.css' %}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+                        <span> 手机市场洞察</span>
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>MENU</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="{% url 'index' %}"><i class="fa fa-home"></i> 市场概要</a>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> 品牌分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="form.html">品牌排行</a></li>
+                                    <li><a href="form_advanced.html">价格段排行</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-table"></i> 商品分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="tables.html">商品排行</a></li>
+                                    <li><a href="{% url 'commerce' %}">热销商品</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-bar-chart-o"></i> 店铺分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="chartjs.html">天猫</a></li>
+                                    <li><a href="chartjs2.html">京东</a></li>
+                                    <li><a href="morisjs.html">对比分析</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>US</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> 关于我们 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{% url 'contacts' %}">成员介绍</a></li>
+                                    <li><a href="{% url 'projects' %}">组内分工</a></li>
+                                    <li><a href="{% url 'vlog' %}">视频展示</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+                <nav class="nav navbar-nav">
+                    <ul class=" navbar-right">
+                        <li class="nav-item dropdown open" style="padding-left: 15px;">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                               id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'plugin/gentelella/production/images/img.jpg' %}" alt="">32组的一群小山炮
+                            </a>
+                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="javascript:;"> 账户信息</a>
+                                <a class="dropdown-item" href="javascript:;">
+                                    <span class="badge bg-red pull-right">50%</span>
+                                    <span>个人设置</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:;">帮助</a>
+                                <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
+                                    退出登录</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>来认识一下我们吧！</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="搜索......">
+                                <span class="input-group-btn">
+{#                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>#}
+                      <button class="btn btn-default glyphicon glyphicon-search" type="button"
+                              style="top: 0px;padding-top: 10px;padding-bottom: 10px"></button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <div class="col-md-12 col-sm-12  text-center">
+                                <ul class="pagination pagination-split">
+                                    <li><a href="#">A</a></li>
+                                    <li><a href="#">B</a></li>
+                                    <li><a href="#">C</a></li>
+                                    <li><a href="#">D</a></li>
+                                    <li><a href="#">E</a></li>
+                                    <li>...</li>
+                                    <li><a href="#">W</a></li>
+                                    <li><a href="#">X</a></li>
+                                    <li><a href="#">Y</a></li>
+                                    <li><a href="#">Z</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组长</i></h4>
+                                        <div class="left col-md-7 col-sm-7">
+                                            <h2>李军</h2>
+                                            <p><strong>标签: </strong> 爬虫能手1号 / 汇报人 / 老干部</p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> 地址:大兴宾馆XXX</li>
+                                                <li><i class="fa fa-phone"></i> 电话: 不告诉你</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-md-5 col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/lj.jpg' %}" alt=""
+                                                 class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" profile-bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组内成员</i></h4>
+                                        <div class="left col-sm-7">
+                                            <h2>何欢</h2>
+                                            <p><strong>标签: </strong> PPT制作 / 大喵饲养员</p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> 地址:基地4XX</li>
+                                                <li><i class="fa fa-phone"></i> 电话: 不告诉你</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/hh.jpg' %}" alt=""
+                                                 class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组内成员</i></h4>
+                                        <div class="left col-sm-7">
+                                            <h2>金逸萱</h2>
+                                            <p><strong>标签: </strong> 汇报人 / 气氛担当 / 傻白甜1号 </p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> 地址:基地4XX</li>
+                                                <li><i class="fa fa-phone"></i> 电话: 你猜</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/jyx.jpg' %}" alt=""
+                                                 class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组内成员</i></h4>
+                                        <div class="left col-sm-7">
+                                            <h2>蔺聪</h2>
+                                            <p><strong>标签: </strong> 前端设计 / 气氛担当 / 千纸鹤 </p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> 地址:基地4XX</li>
+                                                <li><i class="fa fa-phone"></i> 电话: 你猜</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/lc.jpg' %}" alt=""
+                                                 class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组内成员</i></h4>
+                                        <div class="left col-sm-7">
+                                            <h2>李佳颖</h2>
+                                            <p><strong>标签: </strong> 前端设计 / 爱跑步 / 蔺聪小助理</p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> 地址:基地4XX</li>
+                                                <li><i class="fa fa-phone"></i> 电话: 你猜</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/ljy1.jpg' %}"
+                                                 alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组内成员</i></h4>
+                                        <div class="left col-sm-7">
+                                            <h2>杜温鑫</h2>
+                                            <p><strong>标签: </strong> 前端设计 / 傻白甜2号 / 爱旅行 </p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> Address:</li>
+                                                <li><i class="fa fa-phone"></i>电话: 你再猜</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/dwx.jpg' %}" alt=""
+                                                 class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组内成员</i></h4>
+                                        <div class="left col-sm-7">
+                                            <h2>葛天宇</h2>
+                                            <p><strong>标签: </strong> 爬虫能手2号 / 葛老师 / 高冷 </p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> 地址:大兴宾馆XXX</li>
+                                                <li><i class="fa fa-phone"></i>电话: 你再猜</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/gty0.jpg' %}"
+                                                 alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组内成员</i></h4>
+                                        <div class="left col-sm-7">
+                                            <h2>李昭伟</h2>
+                                            <p><strong>标签: </strong> 爬虫能手3号 / 隐形学霸 / 逗比 </p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> 地址:大兴宾馆XXX</li>
+                                                <li><i class="fa fa-phone"></i>电话: 你使劲儿猜</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/lzw.jpg' %}" alt=""
+                                                 class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>组内成员</i></h4>
+                                        <div class="left col-sm-7">
+                                            <h2>张大河</h2>
+                                            <p><strong>标签: </strong> PPT制作 / 小肥宅 / 网瘾少年 </p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> 地址:大兴宾馆XXX</li>
+                                                <li><i class="fa fa-phone"></i>电话: 你使劲儿猜</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="{% static 'plugin/gentelella/production/images/zdh.jpg' %}" alt=""
+                                                 class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-user">
+                                            </i> <i class="fa fa-comments-o"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> 个人简介
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="{% static 'plugin/gentelella/vendors/jquery/dist/jquery.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'plugin/gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'plugin/gentelella/vendors/fastclick/lib/fastclick.js' %}"></script>
+<!-- NProgress -->
+<script src="{% static 'plugin/gentelella/vendors/nprogress/nprogress.js' %}"></script>
+<!-- Chart.js -->
+<script src="{% static 'plugin/gentelella/vendors/Chart.js/dist/Chart.min.js' %}"></script>
+<!-- gauge.js -->
+<script src="{% static 'plugin/gentelella/vendors/gauge.js/dist/gauge.min.js' %}"></script>
+<!-- bootstrap-progressbar -->
+<script src="{% static 'plugin/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+<!-- iCheck -->
+<script src="{% static 'plugin/gentelella/vendors/iCheck/icheck.min.js' %}"></script>
+<!-- Skycons -->
+<script src="{% static 'plugin/gentelella/vendors/skycons/skycons.js' %}"></script>
+<!-- Flot -->
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.pie.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.time.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.stack.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.resize.js' %}"></script>
+<!-- Flot plugins -->
+<script src="{% static 'plugin/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/flot.curvedlines/curvedLines.js' %}"></script>
+<!-- DateJS -->
+<script src="{% static 'plugin/gentelella/vendors/DateJS/build/date.js' %}"></script>
+<!-- JQVMap -->
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/dist/jquery.vmap.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="{% static 'plugin/gentelella/vendors/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{% static 'plugin/gentelella/build/js/custom.min.js' %}"></script>
+</body>
+</html>

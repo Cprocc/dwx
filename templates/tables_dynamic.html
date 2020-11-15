@@ -1,0 +1,383 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'plugin/gentelella/production/images/favicon.ico' %}" type="image/ico"/>
+    <title>手机市场洞察 | </title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugin/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Font Awesome -->
+    <link href="{% static 'plugin/gentelella/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'plugin/gentelella/vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'plugin/gentelella/vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'plugin/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}"
+          rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{% static 'plugin/gentelella/vendors/jqvmap/dist/jqvmap.min.css' %}" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static 'plugin/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css' %}"
+          rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'plugin/gentelella/build/css/custom.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'plugin/DataTables/media/css/dataTables.bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugin/datetimepicker/jquery.datetimepicker.css' %}">
+
+
+    <style>
+        /*查询区域*/
+        #mobile_data > thead > tr > th {
+            text-align: center;
+        }
+
+        #mobile_data > tbody > tr > td {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+                        <span> 手机市场洞察</span>
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>MENU</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="{% url 'index' %}"><i class="fa fa-home"></i> 市场概要</a>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> 品牌分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="form.html">品牌排行</a></li>
+                                    <li><a href="form_advanced.html">价格段排行</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-table"></i> 商品分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="tables.html">商品排行</a></li>
+                                    <li class="active"><a>热销商品<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: block;">
+                                            <li class="sub_menu"><a href="{% url 'Apple' %}">商品查询</a>
+                                            </li>
+                                            <li class="sub_menu"><a href="{% url 'Apple' %}">苹果</a>
+                                            </li>
+                                            <li><a href="{% url 'Huawei' %}">华为</a>
+                                            </li>
+                                            <li><a href="{% url 'XiaoMi' %}">小米</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-bar-chart-o"></i> 店铺分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="chartjs.html">天猫</a></li>
+                                    <li><a href="chartjs2.html">京东</a></li>
+                                    <li><a href="morisjs.html">对比分析</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>US</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> 关于我们 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{% url 'contacts' %}">成员介绍</a></li>
+                                    <li><a href="{% url 'projects' %}">组内分工</a></li>
+                                    <li><a href="{% url 'vlog' %}">视频展示</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+                <nav class="nav navbar-nav">
+                    <ul class=" navbar-right">
+                        <li class="nav-item dropdown open" style="padding-left: 15px;">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                               id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'plugin/gentelella/production/images/img.jpg' %}" alt="">32组的一群小山炮
+                            </a>
+                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="javascript:;"> 账户信息</a>
+                                <a class="dropdown-item" href="javascript:;">
+                                    <span class="badge bg-red pull-right">50%</span>
+                                    <span>个人设置</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:;">帮助</a>
+                                <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
+                                    退出登录</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 500px !important;">
+            <div class="row" style="min-height: 500px !important;">
+                <!--查询数据库信息-->
+                <div class="row" style="width: 1269.200px; min-height: 500px;; margin-left: 0px">
+                    <div class="col-md-12 col-sm-12 ">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>手机详情查询 <small></small></h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- 查询区域 -->
+                            <div class="queryArea">
+                                <form class="form-inline" action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="name" style="margin-left: 300px">名称：</label>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                               value="{{ mobile }}">
+                                    </div>
+                                    {#                                    <div class="form-group">#}
+                                    {#                                        <label for="price">价格：</label>#}
+                                    {#                                        <input type="text" class="form-control" id="price" name="price"#}
+                                    {#                                               value="{{ province }}">#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="form-group">#}
+                                    {#                                        <label for="date">日期：</label>#}
+                                    {#                                        <input type="text" class="form-control" id="date" name="date"#}
+                                    {#                                               value="{{ date }}">#}
+                                    {#                                    </div>#}
+                                    <button type="submit" class="btn btn-primary"
+                                            style="width: 100px;background-color: #26B99A;border-color:#26B99A;border-bottom-width: 0px;margin-bottom: 0px;margin-left: 15px">
+                                        查询
+                                    </button>
+                                    <button type="button" id="btnAll" class="btn btn-primary"
+                                            style="width: 100px;background-color: #26B99A;border-color:#26B99A;border-bottom-width: 0px;margin-bottom: 0px;;margin-left: 10px"
+                                            onclick="window.location.href('{% url 'index' %}')">
+                                        全部
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Table展示数据 -->
+                            <div class="content">
+                                <table id="mobile_data" class="table table-striped table-bordered dataTable no-footer"
+                                       style="width: 100%;margin-top: 15px" role="grid"
+                                       aria-describedby="datatable_info">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 10%">序号</th>
+                                        <th style="width: 20%">名称</th>
+                                        <th style="width: 10%">价格</th>
+                                        <th style="width: 10%">评论数</th>
+                                        <th style="width: 15%">月销售额</th>
+                                        <th style="width: 15%">图片</th>
+                                        <th style="width: 15%">详情页链接</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for mobile in mobiles %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ mobile.0 }}</td>
+                                            <td>{{ mobile.1 }}</td>
+                                            <td>{{ mobile.2 }}</td>
+                                            <td>{{ mobile.3 }}</td>
+                                            <td><img src="{{ mobile.4 }}" height="80px" width="80px"></td>
+                                            <td>
+                                                <input type="button" class="btn btn-primary" value="查看详情"
+                                                       style="background-color: #26B99A;border-color:#26B99A;"
+                                                       onclick="window.open('{{ mobile.5 }}')">
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+
+</body>
+</html>
+<!-- jQuery -->
+<script src="{% static 'plugin/gentelella/vendors/jquery/dist/jquery.min.js' %}"></script>
+<script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="{% static 'plugin/DataTables/media/js/dataTables.bootstrap.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'plugin/gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'plugin/gentelella/vendors/fastclick/lib/fastclick.js' %}"></script>
+<!-- NProgress -->
+<script src="{% static 'plugin/gentelella/vendors/nprogress/nprogress.js' %}"></script>
+<!-- Chart.js -->
+<script src="{% static 'plugin/gentelella/vendors/Chart.js/dist/Chart.min.js' %}"></script>
+<!-- gauge.js -->
+<script src="{% static 'plugin/gentelella/vendors/gauge.js/dist/gauge.min.js' %}"></script>
+<!-- bootstrap-progressbar -->
+<script src="{% static 'plugin/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+<!-- iCheck -->
+<script src="{% static 'plugin/gentelella/vendors/iCheck/icheck.min.js' %}"></script>
+<!-- Skycons -->
+<script src="{% static 'plugin/gentelella/vendors/skycons/skycons.js' %}"></script>
+<!-- Flot -->
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.pie.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.time.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.stack.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.resize.js' %}"></script>
+<!-- Flot plugins -->
+<script src="{% static 'plugin/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/flot.curvedlines/curvedLines.js' %}"></script>
+<!-- DateJS -->
+<script src="{% static 'plugin/gentelella/vendors/DateJS/build/date.js' %}"></script>
+<!-- JQVMap -->
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/dist/jquery.vmap.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="{% static 'plugin/gentelella/vendors/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{% static 'plugin/gentelella/build/js/custom.min.js' %}"></script>
+
+<script>
+    //入口函数
+    $(function () {
+        //=======使用DataTable加载数据======
+        loadDataInDataTable();
+        // =========显示全部的天气信息=========
+        displayAllMobiles();
+    });
+
+    //=================使用DataTable加载数据==========
+    function loadDataInDataTable() {
+        $('#mobile_data').DataTable({
+            searching: false,
+            lengthMenu: [15, 10, 20, 25, 30],
+            bLengthChange: false,
+            language: {
+                "processing": "处理中...",
+                "lengthMenu": "显示 _MENU_ 项结果",
+                "zeroRecords": "没有匹配结果",
+                "info": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "infoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "infoFiltered": "(由 _MAX_ 项结果过滤)",
+                "infoPostFix": "",
+                "search": "搜索:",
+                "searchPlaceholder": "搜索...",
+                "url": "",
+                "emptyTable": "表中数据为空",
+                "loadingRecords": "载入中...",
+                "infoThousands": ",",
+                "paginate": {
+                    "first": "首页",
+                    "previous": "上页",
+                    "next": "下页",
+                    "last": "末页"
+                },
+                "aria": {
+                    "paginate": {
+                        "first": "首页",
+                        "previous": "上页",
+                        "next": "下页",
+                        "last": "末页"
+                    },
+                    "sortAscending": "以升序排列此列",
+                    "sortDescending": "以降序排列此列"
+                },
+                "thousands": "."
+            }
+        });
+    }
+
+    // =========显示全部的天气信息=========
+    function displayAllMobiles() {
+        //为按钮 btnAll绑定事件
+        $('#btnAll').click(function () {
+            // 重新加载页面
+            location.href = "{% url 'index' %}";
+        })
+    }
+</script>

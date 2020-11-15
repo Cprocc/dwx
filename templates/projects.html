@@ -1,0 +1,592 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'plugin/gentelella/production/images/favicon.ico' %}" type="image/ico"/>
+
+    <title>手机市场洞察 | </title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugin/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Font Awesome -->
+    <link href="{% static 'plugin/gentelella/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'plugin/gentelella/vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'plugin/gentelella/vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'plugin/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}"
+          rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{% static 'plugin/gentelella/vendors/jqvmap/dist/jqvmap.min.css' %}" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="{% static 'plugin/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css' %}"
+          rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'plugin/gentelella/build/css/custom.min.css' %}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+                        <span> 手机市场洞察</span>
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>MENU</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="{% url 'index' %}"><i class="fa fa-home"></i> 市场概要</a>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> 品牌分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="form.html">品牌排行</a></li>
+                                    <li><a href="form_advanced.html">价格段排行</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-table"></i> 商品分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="tables.html">商品排行</a></li>
+                                    <li><a href="{% url 'commerce' %}">热销商品</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-bar-chart-o"></i> 店铺分析 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="chartjs.html">天猫</a></li>
+                                    <li><a href="chartjs2.html">京东</a></li>
+                                    <li><a href="morisjs.html">对比分析</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>US</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> 关于我们 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{% url 'contacts' %}">成员介绍</a></li>
+                                    <li><a href="{% url 'projects' %}">组内分工</a></li>
+                                    <li><a href="{% url 'vlog' %}">视频展示</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+                <nav class="nav navbar-nav">
+                    <ul class=" navbar-right">
+                        <li class="nav-item dropdown open" style="padding-left: 15px;">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
+                               id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'plugin/gentelella/production/images/img.jpg' %}" alt="">32组的一群小山炮
+                            </a>
+                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="javascript:;"> 账户信息</a>
+                                <a class="dropdown-item" href="javascript:;">
+                                    <span class="badge bg-red pull-right">50%</span>
+                                    <span>个人设置</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:;">帮助</a>
+                                <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
+                                    退出登录</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>手机市场调查 <small>项目分工</small></h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="搜索......">
+                                <span class="input-group-btn">
+{#                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>#}
+                      <button class="btn btn-default glyphicon glyphicon-search" type="button"
+                              style="top: 0px;padding-top: 10px;padding-bottom: 10px"></button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>组内分工</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <!-- start project list -->
+                                <table class="table table-striped projects">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 1%">#</th>
+                                        <th style="width: 20%">任务名称</th>
+                                        <th style="width: 30%">参与人员</th>
+                                        <th style="width: 35%">任务进程</th>
+                                        <th >任务状态</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>需求分析</a>
+                                            <br/>
+                                            <small>2020.11.09</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lc.jpg' %}" class="avatar" alt="蔺聪">
+                                                    <br/>
+                                                    <small>蔺聪</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/ljy1.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李佳颖</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/hh.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>何欢</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/dwx.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>杜温鑫</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/jyx.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>金逸萱</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>数据库设计</a>
+                                            <br/>
+                                            <small>2020.11.10</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lj.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李军</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/zdh.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>张大河</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/gty.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>葛天宇</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Perfect</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>前端页面设计</a>
+                                            <br/>
+                                            <small>2020.11.11-2020.11.13</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lc.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>蔺聪</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/ljy1.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李佳颖</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/dwx.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>杜温鑫</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Excellent</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>创建数据库</a>
+                                            <br/>
+                                            <small>2020.11.12</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/hh.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>何欢</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lj.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李军</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>爬取数据</a>
+                                            <br/>
+                                            <small>2020.11.11-2020.11.12</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lj.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李军</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lzw.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李昭伟</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/gty.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>葛天宇</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Brilliant</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>前端</a>
+                                            <br/>
+                                            <small>2020.11.12-2020.11.16</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lc.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>蔺聪</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/ljy.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李佳颖</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Excellent</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>后端</a>
+                                            <br/>
+                                            <small>2020.11.12-2020.11.16</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lj.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李军</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lzw.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李昭伟</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>PPT制作</a>
+                                            <br/>
+                                            <small>2020.11.15-2020.11.17</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/dwx.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>杜温鑫</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/hh.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>何欢</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/zdh.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>张大河</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Perfect</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            <a>汇报准备</a>
+                                            <br/>
+                                            <small>2020.11.15-2020.11-17</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/lj.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>李军</small>
+                                                </li>
+                                                <li style="float: left;padding-right: 10px">
+                                                    <img src="{% static 'plugin/gentelella/production/images/jyx.jpg' %}" class="avatar" alt="Avatar">
+                                                    <br/>
+                                                    <small>金逸萱</small>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar"
+                                                     data-transitiongoal="100"></div>
+                                            </div>
+                                            <small>100% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!-- end project list -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="{% static 'plugin/gentelella/vendors/jquery/dist/jquery.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'plugin/gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'plugin/gentelella/vendors/fastclick/lib/fastclick.js' %}"></script>
+<!-- NProgress -->
+<script src="{% static 'plugin/gentelella/vendors/nprogress/nprogress.js' %}"></script>
+<!-- Chart.js -->
+<script src="{% static 'plugin/gentelella/vendors/Chart.js/dist/Chart.min.js' %}"></script>
+<!-- gauge.js -->
+<script src="{% static 'plugin/gentelella/vendors/gauge.js/dist/gauge.min.js' %}"></script>
+<!-- bootstrap-progressbar -->
+<script src="{% static 'plugin/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+<!-- iCheck -->
+<script src="{% static 'plugin/gentelella/vendors/iCheck/icheck.min.js' %}"></script>
+<!-- Skycons -->
+<script src="{% static 'plugin/gentelella/vendors/skycons/skycons.js' %}"></script>
+<!-- Flot -->
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.pie.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.time.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.stack.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/Flot/jquery.flot.resize.js' %}"></script>
+<!-- Flot plugins -->
+<script src="{% static 'plugin/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/flot.curvedlines/curvedLines.js' %}"></script>
+<!-- DateJS -->
+<script src="{% static 'plugin/gentelella/vendors/DateJS/build/date.js' %}"></script>
+<!-- JQVMap -->
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/dist/jquery.vmap.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="{% static 'plugin/gentelella/vendors/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'plugin/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{% static 'plugin/gentelella/build/js/custom.min.js' %}"></script>
+</body>
+</html>
