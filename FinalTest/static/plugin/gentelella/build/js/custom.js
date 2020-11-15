@@ -2171,40 +2171,19 @@ function init_charts() {
 
     }
 
-    // Bar chart
-
-    if ($('#mybarChart').length) {
-
-        var ctx = document.getElementById("mybarChart");
-        var mybarChart = new Chart(ctx, {
-            type: 'bar',
+    // 手机销量对比柱状图
+        if ($("#mybarChart").length) e = document.getElementById("mybarChart"), new Chart(e, {
+            type: "bar",
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: ["华为", "Oppo", "vivo", "小米", "Apple"],
                 datasets: [{
-                    label: '# of Votes',
+                    label: "# of Votes",
                     backgroundColor: "#26B99A",
-                    data: [51, 30, 40, 28, 92, 50, 45]
-                }, {
-                    label: '# of Votes',
-                    backgroundColor: "#03586A",
-                    data: [41, 56, 25, 48, 72, 34, 12]
-                }]
+                    data: [51, 30, 40, 28, 92]
+                }, {label: "# of Votes", backgroundColor: "#03586A", data: [41, 56, 25, 48, 72]}]
             },
-
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
+            options: {scales: {yAxes: [{ticks: {beginAtZero: !0}}]}}
         });
-
-    }
-
-
     // Doughnut chart
 
     if ($('#canvasDoughnut').length) {
